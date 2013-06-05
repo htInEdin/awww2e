@@ -6,8 +6,9 @@
 <meta content="charset: utf-8" name="Content-Type"/>
 <meta name="viewport" content="width=device-width,initial-scale=1"/>
 <title>Architecture of the World Wide Web (Second Edition)</title>
-<!--src=../respec/js/require_x.js data-main=../respec/js/profile-w3c-common async-->
-<script src="http://www.w3.org/Tools/respec/respec-w3c-common" class="remove">
+<!--
+<script src="http://www.w3.org/Tools/respec/respec-w3c-common" class="remove">-->
+<script src="../respec/js/require-debug.js" data-main="../respec/js/profile-w3c-common" async="async">
 </script>
 <script class="remove"><![CDATA[
 var respecConfig = {
@@ -53,16 +54,16 @@ var respecConfig = {
     inlineCSS: true,
     noIDLIn: true,
     noLegacyStyle: false,
-    extraCSS: ["../ReSpec.js/css/respec.css"],
     };]]>
 </script>
+ <link type="text/css" rel="stylesheet" href="upstream/editorial.css"/>
 </head>
 <body>
 <div id="abstract" class="section">
 <p>The World Wide Web uses relatively simple technologies with
 sufficient scalability, efficiency and utility that they have
 resulted in a remarkable information space of interrelated
-resources, growing across languages, cultures, and media. In an
+resources, growing across languages, cultures<span class="del">,</span> and media. In an
 effort to preserve these properties of the information space as the
 technologies evolve, this architecture document discusses the core
 design components of the Web. They are identification of resources,
@@ -72,8 +73,9 @@ relate core design components, constraints, and good practices to
 the principles and properties they support.</p>
 </div>
 <div id="sotd" class="section">
-<p>This is an unofficial draft and work in progress. It has no
-official standing.</p>
+<p class="ins">This is an unofficial draft and work in progress. It has no
+official standing: rather it represents a trial balloon to help the <a href="http://www.w3.org/2001/tag/">TAG</a>
+decide whether to proceed with a second edition of <a href="http://www.w3.org/TR/webarch/">AWWW</a> or not.</p>
 <p><em>This section describes the status of this document at the
 time of its publication. Other documents may supersede this
 document. A list of current W3C publications and the latest
@@ -86,16 +88,17 @@ issues; it is not intended to address all of them. The TAG intends
 to address the remaining (and future) issues after publication of
 Volume Two as a Recommendation.</p>
 <p>This document uses concepts and terms regarding URIs as defined
-by the IETF. In an <a href="http://www1.ietf.org/mail-archive/web/ietf-announce/current/msg00602.html">
+by the IETF. <span class="del">In an <a href="http://www1.ietf.org/mail-archive/web/ietf-announce/current/msg00602.html">
 18 Oct 2004 announcement</a>, the revision of RFC2396 was endorsed
 as an IETF Specification, though the latest published draft as of
-this writing is <a href="http://www.apache.org/~fielding/uri/rev-2002/rfc2396bis.html">draft-fielding-uri-rfc2396bis-07</a>.
-The <a href="#URI">[URI]</a> citation should reflect publication of
-the relevant RFC in future revisions.</p>
+this writing is <a href="http://www.apache.org/~fielding/uri/rev-2002/rfc2396bis.html">draft-fielding-uri-rfc2396bis-07</a>.</span>
+The <a href="#URI">[URI]</a> <span class="del">citation should reflect publication of
+the relevant RFC in future revisions</span><span class="ins">specification is
+the primary normative reference</span>.</p>
+<div class="note" title="(Editorial)">What should we say here about HTTPbis, if anything?</div>
 </div>
 <div id="principles" class="section">
-<h3>List of Principles, Constraints, and Good Practice
-Notes</h3>
+<h3>List of Principles, Constraints, and Good Practice Notes</h3>
 <p>The following principles, constraints, and good practice notes
 are discussed in this document and listed here for convenience.
 There is also a <a href="summary.html">free-standing

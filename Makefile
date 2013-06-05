@@ -7,11 +7,13 @@ upstream/%.html: %.xhtml to5.xsl upstream/tidyconfig.txt
 	rxp -o d "$<" | $(SAXON) - to5.xsl | \
 	 $(TIDY) -utf8 -ashtml -config upstream/tidyconfig.txt --doctype html5 | \
 	sed -e '4,6d' \
-	    -e '/specStatus:/s/unofficial/ED/' > "$@"
+	    -e '/specStatus:/s/unofficial/ED/' \
+            -e '/<link /s/upstream\///' > "$@"
 
 %.xhtml: upstream/%.html
 	sed  -e '4s/charset="/name="Content-Type" content="charset: /' \
 	     -e '/specStatus:/s/ED/unofficial/' \
+            -e '/<link /s/editorial/upstream\/editorial/' \
 	     -e 's/<section\([^>]*class="\)/<div\1section /g' \
 	     -e 's/<\(section\|figure\|figcaption\)/<div class="\1"/g' \
 	     -e 's/<\/\(section\|figure\|figcaption\)>/<\/div>/' "$<" | $(TIDY) -utf8 -asxml | \
