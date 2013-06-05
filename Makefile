@@ -3,13 +3,13 @@
 SAXON=saxon92
 TIDY=ntidy
 
-%.html: %.xhtml to5.xsl tidyconfig.txt
+upstream/%.html: %.xhtml to5.xsl upstream/tidyconfig.txt
 	rxp -o d "$<" | $(SAXON) - to5.xsl | \
-	 $(TIDY) -utf8 -ashtml -config tidyconfig.txt --doctype html5 | \
+	 $(TIDY) -utf8 -ashtml -config upstream/tidyconfig.txt --doctype html5 | \
 	sed -e '4,6d' \
 	    -e '/specStatus:/s/unofficial/ED/' > "$@"
 
-%.xhtml: %.html
+%.xhtml: upstream/%.html
 	sed  -e '4s/charset="/name="Content-Type" content="charset: /' \
 	     -e '/specStatus:/s/ED/unofficial/' \
 	     -e 's/<section\([^>]*class="\)/<div\1section /g' \
