@@ -1,14 +1,12 @@
-<?xml version='1.0'?>
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd" >
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
 <meta content="HTML Tidy for HTML5 (experimental) for Cygwin https://github.com/w3c/tidy-html5/tree/c63cc39" name="generator"/>
 <meta content="charset: utf-8" name="Content-Type"/>
 <meta name="viewport" content="width=device-width,initial-scale=1"/>
 <title>Architecture of the World Wide Web (Second Edition)</title>
-<!--
-<script src="http://www.w3.org/Tools/respec/respec-w3c-common" class="remove">-->
-<script src="../respec/js/require-debug.js" data-main="../respec/js/profile-w3c-common" async="async">
+
+<script async="async" data-main="../respec/js/profile-w3c-common" src="../respec/js/require-debug.js" class="remove">
 </script>
 <script class="remove"><![CDATA[
 var respecConfig = {
@@ -56,26 +54,27 @@ var respecConfig = {
     noLegacyStyle: false,
     };]]>
 </script>
- <link type="text/css" rel="stylesheet" href="upstream/editorial.css"/>
+<link type="text/css" rel="stylesheet" href="upstream/editorial.css"/>
 </head>
 <body>
 <div id="abstract" class="section">
 <p>The World Wide Web uses relatively simple technologies with
 sufficient scalability, efficiency and utility that they have
 resulted in a remarkable information space of interrelated
-resources, growing across languages, cultures<span class="del">,</span> and media. In an
-effort to preserve these properties of the information space as the
-technologies evolve, this architecture document discusses the core
-design components of the Web. They are identification of resources,
-representation of resource state, and the protocols that support
-the interaction between agents and resources in the space. We
-relate core design components, constraints, and good practices to
-the principles and properties they support.</p>
+resources, growing across languages, cultures<span class="del">,</span> and media. In an effort to preserve these properties
+of the information space as the technologies evolve, this
+architecture document discusses the core design components of the
+Web. They are identification of resources, representation of
+resource state, and the protocols that support the interaction
+between agents and resources in the space. We relate core design
+components, constraints, and good practices to the principles and
+properties they support.</p>
 </div>
 <div id="sotd" class="section">
-<p class="ins">This is an unofficial draft and work in progress. It has no
-official standing: rather it represents a trial balloon to help the <a href="http://www.w3.org/2001/tag/">TAG</a>
-decide whether to proceed with a second edition of <a href="http://www.w3.org/TR/webarch/">AWWW</a> or not.</p>
+<p class="ins">This is an unofficial draft and work in progress. It
+has no official standing: rather it represents a trial balloon to
+help the <a href="http://www.w3.org/2001/tag/">TAG</a> decide
+whether to proceed with a second edition of <a href="http://www.w3.org/TR/webarch/">AWWW</a> or not.</p>
 <p><em>This section describes the status of this document at the
 time of its publication. Other documents may supersede this
 document. A list of current W3C publications and the latest
@@ -92,10 +91,12 @@ by the IETF. <span class="del">In an <a href="http://www1.ietf.org/mail-archive/
 18 Oct 2004 announcement</a>, the revision of RFC2396 was endorsed
 as an IETF Specification, though the latest published draft as of
 this writing is <a href="http://www.apache.org/~fielding/uri/rev-2002/rfc2396bis.html">draft-fielding-uri-rfc2396bis-07</a>.</span>
-The <a href="#URI">[URI]</a> <span class="del">citation should reflect publication of
-the relevant RFC in future revisions</span><span class="ins">specification is
-the primary normative reference</span>.</p>
-<div class="note" title="(Editorial)">What should we say here about HTTPbis, if anything?</div>
+The <a href="#URI">[URI]</a> <span class="del">citation should
+reflect publication of the relevant RFC in future
+revisions</span><span class="ins">specification is the primary
+normative reference</span>.</p>
+<div title="(Editorial)" class="note">What should we say here about
+HTTPbis, if anything?</div>
 </div>
 <div id="principles" class="section">
 <h3>List of Principles, Constraints, and Good Practice Notes</h3>
@@ -330,7 +331,7 @@ the beginning of the Introduction) where a person follows a link
 via a user agent, the user agent retrieves and presents data, the
 user follows another link, etc. This document does not discuss in
 any detail other interaction models such as voice browsing (see,
-for example, [[!VOICEXML2]]). The choice of interaction model may
+for example, [[!VOICEXML20]]). The choice of interaction model may
 have an impact on expected agent behavior. For instance, when a
 graphical user agent running on a laptop computer or hand-held
 device encounters an error, the user agent can report errors
@@ -473,7 +474,7 @@ allocates names and associates them with the resources they
 identify. URIs are divided into <a>schemes</a> that define, via
 their scheme specification, the mechanism by which scheme-specific
 identifiers are associated with resources. For example, the &quot;http&quot;
-URI scheme ([[!RFC2616]]) uses DNS and TCP-based HTTP servers for
+URI scheme ([[!HTTP11]]) uses DNS and TCP-based HTTP servers for
 the purpose of identifier allocation and resolution. As a result,
 identifiers such as &quot;http://example.com/somepath#someFrag&quot; often
 take on meaning through the community experience of performing an
@@ -683,7 +684,7 @@ character-by-character.</p>
 as server-side redirects to relate the two resources. The community
 benefits when the URI owner supports redirection of an aliased URI
 to the corresponding &quot;official&quot; URI. For more information on
-redirection, see section 10.3, Redirection, in [[!RFC2616]]. See
+redirection, see section 10.3, Redirection, in [[!HTTP11]]. See
 also [[!CHIPS]] for a discussion of some best practices for server
 administrators.</p>
 </div>
@@ -770,7 +771,7 @@ invoked to retrieve a representation of the resource, then an
 maintains a registry [[!IANASchemes]] of mappings between URI
 scheme names and scheme specifications. For instance, the IANA
 registry indicates that the &quot;http&quot; scheme is defined in
-[[!RFC2616]]. The process for registering a new URI scheme is
+[[!HTTP11]]. The process for registering a new URI scheme is
 defined in [[!RFC2717]].</p>
 <p>Unregistered URI schemes SHOULD NOT be used for a number of
 reasons:</p>
@@ -969,7 +970,7 @@ representation of a resource, whereas a hypertext link checker
 might use HTTP HEAD on the same URI simply to establish whether a
 representation is available. Some URI schemes set expectations
 about available access methods, others (such as the URN scheme
-[[!RFC2141]]) do not. Section 1.2.2 of [[!URI]] discusses the
+[[!URN]]) do not. Section 1.2.2 of [[!URI]] discusses the
 separation of identification and interaction in more detail. For
 more information about relationships between multiple access
 methods and URI addressability, see the TAG finding <cite>&quot;<a href="http://www.w3.org/2001/tag/doc/whenToUseGet.html">URIs,
@@ -1035,15 +1036,15 @@ with a scheme name that refers to a specification for assigning
 identifiers within that scheme.&quot; The URI scheme name in this
 example is &quot;http&quot;.</li>
 <li>[[!IANASchemes]] states that the &quot;http&quot; scheme is defined by
-the HTTP/1.1 specification (RFC 2616 [[!RFC2616]], section
+the HTTP/1.1 specification (RFC 2616 [[!HTTP11]], section
 3.2.2).</li>
 <li>In this SVG context, the agent constructs an HTTP GET request
-(per section 9.3 of [[!RFC2616]]) to retrieve the
+(per section 9.3 of [[!HTTP11]]) to retrieve the
 representation.</li>
-<li>Section 6 of [[!RFC2616]] defines how the server constructs a
+<li>Section 6 of [[!HTTP11]] defines how the server constructs a
 corresponding response message, including the 'Content-Type'
 field.</li>
-<li>Section 1.4 of [[!RFC2616]] states &quot;HTTP communication usually
+<li>Section 1.4 of [[!HTTP11]] states &quot;HTTP communication usually
 takes place over TCP/IP connections.&quot; This example addresses
 neither that step in the process nor other steps such as Domain
 Name System (<abbr>DNS</abbr>) resolution.</li>
@@ -1165,7 +1166,7 @@ the agent that dereferences a URI; the fragment identifier is not
 passed to other systems during the process of retrieval. This means
 that some intermediaries in Web architecture (such as proxies) have
 no interaction with fragment identifiers and that redirection (in
-HTTP [[!RFC2616]], for example) does not account for fragments.</p>
+HTTP [[!HTTP11]], for example) does not account for fragments.</p>
 </div>
 <div id="frag-coneg" class="section">
 <h4>Fragment identifiers and content negotiation</h4>
@@ -1308,7 +1309,7 @@ of these interactions. Unsafe interactions include subscribing to a
 newsletter, posting to a list, or modifying a database.
 <strong>Note:</strong> In this context, the word &quot;unsafe&quot; does not
 necessarily mean &quot;dangerous&quot;; the term &quot;safe&quot; is used in section
-9.1.1 of [[!RFC2616]] and &quot;unsafe&quot; is the natural opposite.</p>
+9.1.1 of [[!HTTP11]] and &quot;unsafe&quot; is the natural opposite.</p>
 <div class="boxedtext">
 <p><span class="storylab">Story</span></p>
 <div class="story">
@@ -1386,7 +1387,7 @@ agent has incurred an obligation on behalf of the user. For
 transaction results, HTTP allows representation providers to
 associate a URI with the results of an HTTP POST request using the
 &quot;Content-Location&quot; header (described in section 14.14 of
-[[!RFC2616]]).</p>
+[[!HTTP11]]).</p>
 </div>
 </div>
 <div id="representation-management" class="section">
@@ -1462,7 +1463,7 @@ the identified resource consistently and predictably.</p>
 of the <a href="#uri-ownership">URI owner</a>. The choice of a
 particular URI scheme provides no guarantee that those URIs will be
 persistent or that they will not be persistent.</p>
-<p>HTTP [[!RFC2616]] has been designed to help manage URI
+<p>HTTP [[!HTTP11]] has been designed to help manage URI
 persistence. For example, HTTP redirection (using the 3xx response
 codes) permits servers to tell an agent that further action needs
 to be taken by the agent in order to fulfill the request (for
@@ -1929,7 +1930,7 @@ today.</p>
 <p>When one resource (representation) refers to another resource
 with a URI, this constitutes a <dfn>link</dfn> between the two
 resources. Additional metadata may also form part of the link (see
-[[!XLink10]], for example). <strong>Note:</strong> In this
+[[!XLINK10]], for example). <strong>Note:</strong> In this
 document, the term &quot;link&quot; generally means &quot;relationship&quot;, not
 &quot;physical connection&quot;.</p>
 <div class="boxedtext">
@@ -2029,7 +2030,7 @@ manner and combined flexibly.</li>
 <h4>Links in XML</h4>
 <p>Sophisticated linking mechanisms have been invented for XML
 formats. XPointer allows links to address content that does not
-have an explicit, named anchor. [[!XLink]] is an appropriate
+have an explicit, named anchor. [[!XLINK10]] is an appropriate
 specification for representing links in <a href="#hypertext">hypertext</a> XML applications. XLink allows links to
 have multiple ends and to be expressed either inline or in &quot;link
 bases&quot; stored external to any or all of the resources identified by
@@ -2156,7 +2157,7 @@ optimized for software agents in order to meet the needs of those
 who will use the namespace vocabulary.</p>
 </div>
 <p>For example, the following are examples of data formats for
-namespace documents: [[!OWL10]], [[!RDDL]], [[!XMLSCHEMA]], and
+namespace documents: [[!OWL10]], [[!RDDL]], [[!XMLSCHEMA-1]], and
 [[!XHTML11]]. Each of these formats meets different requirements
 described above for satisfying the needs of an agent that wants
 more information about the namespace. Note, however, issues related

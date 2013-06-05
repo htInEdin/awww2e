@@ -12,6 +12,7 @@ upstream/%.html: %.xhtml to5.xsl upstream/tidyconfig.txt
 
 %.xhtml: upstream/%.html
 	sed  -e '4s/charset="/name="Content-Type" content="charset: /' \
+	     -e '/\/respec-w3c-common">/s/".*"/"..\/respec\/js\/require-debug.js" data-main="..\/respec\/js\/profile-w3c-common" async="async"/' \
 	     -e '/specStatus:/s/ED/unofficial/' \
             -e '/<link /s/editorial/upstream\/editorial/' \
 	     -e 's/<section\([^>]*class="\)/<div\1section /g' \
