@@ -8,6 +8,10 @@
   <meta charset="utf-8"/>
  </xsl:template>
  
+ <xsl:template match="x:script[contains(@src,'respec')]">
+  <script class="remove" src="http://www.w3.org/Tools/respec/respec-w3c-common"><xsl:apply-templates/></script>
+ </xsl:template>
+ 
  <xsl:template match="x:div[@class='section' or @class='figure' or @class='figcaption']">
   <xsl:element name="{@class}" namespace="http://www.w3.org/1999/xhtml"><xsl:apply-templates select="node()|@*[local-name()!='class']"/></xsl:element>
  </xsl:template>
