@@ -21,5 +21,5 @@ upstream/%.html: %.xhtml to5.xsl upstream/tidyconfig.txt
 	sed '1s@.*@<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">@' | rxp -d | \
 	sed -e '/<script class="remove">/s/$$/<![CDATA[/' \
 	    -e '/^<!\[CDATA\[/d' \
-	    -e '/    };/s/$$/]]>/' \
+	    -e '/^ *};/s/$$/]]>/' \
 	    -e '/^]]>/d' > "$@"
